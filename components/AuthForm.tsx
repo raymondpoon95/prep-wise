@@ -2,8 +2,8 @@
 
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
 
 import { FormType } from "@/types";
 
@@ -62,35 +62,12 @@ export const AuthForm = ({ type }: { type: FormType }) => {
 
         <h3>Practice job interviews with AI</h3>
         <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="w-full space-y-6 mt-4 form"
-          >
-            {!isSignIn && (
-              <FormField
-                control={form.control}
-                name="name"
-                label="Name"
-                placeholder="Your Name"
-                type="text"
-              />
-            )}
+          <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-6 mt-4 form">
+            {!isSignIn && <FormField control={form.control} name="name" label="Name" placeholder="Your Name" type="text" />}
 
-            <FormField
-              control={form.control}
-              name="email"
-              label="Email"
-              placeholder="Your email address"
-              type="email"
-            />
+            <FormField control={form.control} name="email" label="Email" placeholder="Your email address" type="email" />
 
-            <FormField
-              control={form.control}
-              name="password"
-              label="Password"
-              placeholder="Enter your password"
-              type="password"
-            />
+            <FormField control={form.control} name="password" label="Password" placeholder="Enter your password" type="password" />
 
             <Button type="submit" className="btn">
               {isSignIn ? "Sign In" : "Create an Account"}
@@ -100,10 +77,7 @@ export const AuthForm = ({ type }: { type: FormType }) => {
 
         <p className="text-center">
           {isSignIn ? "No account yet?" : "Have an account already?"}
-          <Link
-            href={!isSignIn ? "/sign-in" : "/sign-up"}
-            className="font-bold text-user-primary ml-1"
-          >
+          <Link href={!isSignIn ? "/sign-in" : "/sign-up"} className="font-bold text-user-primary ml-1">
             {!isSignIn ? "Sign In" : "Sign Up"}
           </Link>
         </p>
